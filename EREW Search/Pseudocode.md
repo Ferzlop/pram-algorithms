@@ -7,7 +7,7 @@ function broadcast(a[n], x)
       a[j] = a[j-2^(i-1)]
   return a
 
-function minima(a[0:n-1])
+function minima(a[n])
   for 1 <= i <= log_2(n) do
     for 0 <= j < n / (2i) do in parallel
       if a[2j] > a[2j+1] then
@@ -16,12 +16,13 @@ function minima(a[0:n-1])
         a[j] = a[2j]
   return a[0]
 
-function erewSearch(l[0:n-1], x)
-  call broadcast(temp[0:n-1], x)
+function erewSearch(l[n], x)
+  temp[n]
+  call broadcast(temp[n], x)
   for 0 <= i < n do in parallel
     if l[i] == temp[i] then
       temp[i] = i
     else
       temp[i] = INF
-  return minima(temp[0:n-1])
+  return minima(temp[n])
 ```
