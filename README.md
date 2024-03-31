@@ -10,5 +10,10 @@ This repository contains some algorithms using this model:
 
 - CREW Array Sum
 - EREW Array Sum
+- EREW Array Search
+- CRCW Array Search 
+- CRCW Array Sort
+- EREW Array Sort
+- CREW Matrix Multiplication
 
 Each folder contains the C code and a Markdown file which contains the pseudocode for the algorithm.

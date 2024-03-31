@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <omp.h>
 #include <math.h>
-#include <string.h>
 #include <limits.h>
 
 #ifdef __INTELLISENSE__
