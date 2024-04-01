@@ -1,4 +1,4 @@
-# CREW Sum
+# EREW Sum
 ```
 for 1 <= i <= log_2(n) do
   for-each 1 <= j <= n/2 do in parallel
