@@ -22,12 +22,12 @@ void sort(int a[])
     win[i] = 0;
   }
 
-#pragma omp parallel for
+#pragma omp parallel for collapse(2)
   for (int i = 0; i < SIZE; i++)
   {
-#pragma omp critical
     for (int j = i + 1; j < SIZE; j++)
     {
+#pragma omp critical
       if (a[i] > a[j])
       {
         win[i] += 1;
