@@ -24,7 +24,7 @@ int minima(int a[])
     win[i] = 0;
   }
 
-#pragma omp parallel for
+#pragma omp parallel for collapse(2)
   for (int i = 0; i < SIZE; i++)
   {
     for (int j = i + 1; j < SIZE; j++)
