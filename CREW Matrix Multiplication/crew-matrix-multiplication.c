@@ -14,8 +14,14 @@ enum
 
 int main()
 {
-  int a[SIZE][SIZE] = {{1, 2}, {3, 4}};
-  int b[SIZE][SIZE] = {{5, 6}, {7, 8}};
+  int a[SIZE][SIZE] = {
+      {1, 2},
+      {1, 2},
+  };
+  int b[SIZE][SIZE] = {
+      {1, 2},
+      {1, 2},
+  };
   int c[SIZE][SIZE][SIZE] = {0};
 
 #pragma omp parallel for collapse(3)
@@ -30,14 +36,20 @@ int main()
     }
   }
 
-#pragma omp parallel for collapse(3)
-  for (int i = 0; i < SIZE; i++)
+  for (int l = 1; l <= (int)log2(SIZE); l++)
   {
-    for (int j = 0; j < SIZE; j++)
+#pragma omp parallel for collapse(3)
+    for (int i = 0; i < SIZE; i++)
     {
-      for (int k = 1; k < SIZE; k++)
+      for (int j = 0; j < SIZE; j++)
       {
-        c[i][j][0] += c[i][j][k];
+        for (int k = 1; k <= SIZE / 2; k++)
+        {
+          if ((2 * k) % (2 * l) == 0)
+          {
+            c[i][j][(2 * k) - 1] += c[i][j][(2 * k) - 1 - (int)pow(2, l - 1)];
+          }
+        }
       }
     }
   }
@@ -47,7 +59,7 @@ int main()
   {
     for (int j = 0; j < SIZE; j++)
     {
-      printf("%d ", c[i][j][0]);
+      printf("%d ", c[i][j][SIZE - 1]);
       printf(" ");
     }
     printf("\n");
