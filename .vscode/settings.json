@@ -4,6 +4,7 @@
     "*.f7": "html",
     "string.h": "c",
     "stdlib.h": "c",
-    "random": "c"
+    "random": "c",
+    "ostream": "cpp"
   }
 }
