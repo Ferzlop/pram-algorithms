@@ -56,6 +56,7 @@ std::vector<int> OddEvenMerge(const std::vector<int> &left, const std::vector<in
   std::vector<int> result(n);
 
   int i = 0, j = 0, k = 0;
+#pragma omp while
   while (i < left.size() && j < right.size())
   {
     if (left[i] <= right[j])
@@ -67,10 +68,12 @@ std::vector<int> OddEvenMerge(const std::vector<int> &left, const std::vector<in
       result[k++] = right[j++];
     }
   }
+#pragma omp while
   while (i < left.size())
   {
     result[k++] = left[i++];
   }
+#pragma omp while
   while (j < right.size())
   {
     result[k++] = right[j++];
